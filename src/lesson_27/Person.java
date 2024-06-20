@@ -1,4 +1,4 @@
-package lesson_26.persons;
+package lesson_27;
 
 public class Person {
     private String email;

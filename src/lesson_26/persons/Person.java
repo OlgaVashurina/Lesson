@@ -16,7 +16,7 @@ public class Person {
     public void setEmail(String email) {
         if (isEmailValid(email)) {
             this.email = email;
-        }else {
+        } else {
             this.email = null;
         }
     }
@@ -64,6 +64,7 @@ public class Person {
         // 5. до собаки должен быть мин 1 символ
         if (indexAt == 0) return false;
 
+        if (!Character.isAlphabetic(email.charAt(0))) return false;
         return true;
     }
 
@@ -93,12 +94,21 @@ public class Person {
             return false;
         }
 
+        /*
+        boolean[] res = new boolean[4];
+        for (char ch : password.toCharArray()) {
+            if (Character.isDigit(ch)) {
+                res[0]= true;}
+            if (Character.isDigit(ch)) {
+                res[1] = true;}
+         */
+
+
         boolean hasDigit = false;
         boolean hasLower = false;
         boolean hasUpper = false;
         boolean hasSpecial = false;
 
-        String specialChars = "!%$@&";
         for (char ch : password.toCharArray()) {
             if (Character.isDigit(ch)) {
                 hasDigit = true;
@@ -106,7 +116,7 @@ public class Person {
                 hasLower = true;
             } else if (Character.isUpperCase(ch)) {
                 hasUpper = true;
-            } else if (specialChars.indexOf(ch) != -1) {
+            } else if ("!%$@&*()[]".indexOf(ch) >= 0) {
                 hasSpecial = true;
             }
         }
