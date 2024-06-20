@@ -1,12 +1,9 @@
-package homework_23.list;
-/*
-@date 04.06.2024
-@author Sergey Bugaienko
-*/
+package lists;
 
 import java.lang.reflect.Array;
+import java.util.Iterator;
 
-public class MagicList<T> implements MyList<T> {
+public class MagicList<T> implements MyList<T>, Iterable<T> {
     private T[] array;
     private int cursor; // присвоено значение по умолчанию - 0
 
@@ -212,6 +209,27 @@ public class MagicList<T> implements MyList<T> {
     }
 
 
+    @Override
+    public Iterator<T> iterator() {
+        return new Iter();
+    }
+
+    private class Iter implements Iterator<T> {
+
+        // перебирать индексы.
+        // текущий индекс сравнить кол-вом элементов
+        // Взять значение - просто взять по индексу. И переключиться на след.индекс
+
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public T next() {
+            return null;
+        }
+    }
 }
 
 

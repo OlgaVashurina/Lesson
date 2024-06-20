@@ -8,9 +8,8 @@ public class OuterClass2 {
                 System.out.println("Inside local inner class");
             }
         }
+
         LocalInnerClass localInnerObject = new LocalInnerClass();
         localInnerObject.display();
-
-
     }
 }

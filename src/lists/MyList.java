@@ -1,4 +1,4 @@
-package homework_23.list;
+package lists;
 
 public interface MyList<T> {
 
