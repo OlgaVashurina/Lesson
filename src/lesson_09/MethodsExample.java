@@ -57,7 +57,7 @@ public class MethodsExample {
         int[] digits = {0, 1, 2, 3, 4, 5};
         changeMe(digits);
 
-        System.out.println("array[0] из Main: " + digits[0]);
+        System.out.println("array[0] из SwitchCase: " + digits[0]);
 
         String str = "Java";
         changeMe(str);

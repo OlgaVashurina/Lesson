@@ -6,7 +6,7 @@ public class Person {
 
     public Person(String email, String password) {
         setEmail(email);
-        this.password = password;
+        setPassword(password);
     }
 
     public String getEmail() {
@@ -60,7 +60,10 @@ public class Person {
         }
 
         // 5. до собаки должен быть мин 1 символ
+        // ???
         if (indexAt == 0) return false;
+
+        if (!Character.isAlphabetic(email.charAt(0)))  return false;
 
         return true;
     }
@@ -77,14 +80,52 @@ public class Person {
     /*
     Требования к паролю
     1. длина >= 8
-    2. мин 1 цифра
-    3. мин 1 маленькая буква
-    4. мин 1 большая буква
-    5. мин 1 спец.символ ("!%$@&")
+    2. должна быть мин 1 цифра
+    3. должна быть мин 1 маленькая буква
+    4. должна быть мин 1 большая буква
+    5. должна быть мин 1 спец.символ ("!%$@&*()[]")
      */
 
     private boolean isPasswordValid(String password) {
-        return false;
+        if (password == null || password.length() < 8) return false;
+
+        boolean isDigit = false;
+        boolean isLowerCase = false;
+        boolean isUpperCase = false;
+        boolean isSpecialSymbol = false;
+
+        // альтернативный способ объявления переменных
+        boolean[] res = new boolean[4]; // false, false, false, false
+
+        for (char ch : password.toCharArray()) {
+            if (Character.isDigit(ch)) {
+                isDigit = true;
+//                res[0] = true;
+            }
+
+            if (Character.isLowerCase(ch)) {
+                isLowerCase = true;
+//                res[1] = true;
+            }
+
+            if (Character.isUpperCase(ch)) {
+                isUpperCase = true;
+//                res[2] = true;
+            }
+
+            if ("!%$@&*()[]".indexOf(ch) >= 0) {
+                isSpecialSymbol = true;
+//                res[3] = true;
+            }
+
+
+        }
+
+        //true      true
+        return  isDigit && isLowerCase && isUpperCase && isSpecialSymbol;
+
+//        return res[0] && res[1] && res[2] && res[3];
+
     }
 
     @Override
